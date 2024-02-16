@@ -1,0 +1,30 @@
+airgeddon == wifi ağında handshake yapılıyor
+ona yarayan bir tool
+
+iwconfig == usb wifi adaptörün çalışıp çalışmadığı
+
+- apt install airgeddon
+
+				ARDIŞIK KOMUTLAR
+
+- ls -al & ping google.com == google a pink atar ve dosya ayrıntılarını gösterir. bunu durdurmayı unutma
+
+- mkdir linux & touch linux/dosya.txt == hem yeni bir dosya oluşturup onun içine klasör atama
+
+				RUN-LEVEL
+
+- cd /etc/
+
+- rcs0 dan rcsS ye kadar olan (0 1 2 3 4 5 6 S) ayarlar bir runlevel ayarlarıdır
+
+- ls -al | grep rc.*.d
+
+- cd  rc0.d/
+
+- ls -al
+
+- cd ..
+
+- ls -al |grep rc0.*.d
+
+- 
