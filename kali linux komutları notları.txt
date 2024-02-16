@@ -1,0 +1,511 @@
+			PAKET YÖNETİMİ
+
+- sudo -k == sudo yetkisini sonlandırıp tekrar şifre isteyen komuttur.
+
+-apt
+
+-komutun nasıl çalıştığı="man" = man apt,wget,nmap vb.
+
+
+-whoamı ben kimim komutu
+
+-sudo=yönetici komutu
+
+-sudo apt=root olarak çalıştırır
+
+-sudo apt install nmap=indirir nmap i
+
+-sudo apt install==bu olacak
+
+-sudo apt update=günceller
+
+-sudo apt upgrade=bir üst versiyona çıkarır
+
+-ctrl-c komutu öldürür
+
+-sudo su=root kullanıcı yapar yani yönetici yapar.tamamen
+
+- sudo -i == sudo su ile aynıdır tamamen rooy yekisi verir yani yönetici
+
+-clear=temizler
+
+-dpkg=yüklü olan herşeyi gösterir
+
+-linux un uzantısı .deb tir
+
+-dpkg -l == sistemde kurulu olan tüm paketleri gösterir
+
+-dpkg -l | grep nmap == grep atma denir. nmap vb oraya ne yazılırsa onunla ilgili sonuç verir. bir tür filtreleme
+
+-onnline paket yükleme == apt komutu
+
+-offline paket yükleme == dpkg komutu
+
+-dpkg -l | grep sqlmap,nmap,wget vb
+
+-apt search sqlmap == daha detaylı bilgi verir. SQLMAP ÖRNEKTİR
+
+-apt show sqlmap == biyografisi çıkarır. özelliklerini falan işte search ile aynı
+
+- apt-cache depends nmap,wget vb. == uygulamanın çalışması için gerekli olanları gösterir
+
+-yukarı ok tuşuna basarsan son kullanılan komutlar
+
+-apt install paketadı
+
+			PAKETİ KURMA
+
+-sudo apt install wget,nmap,chrome vb. == indirir paketi internetten bulup. sudosuz kullanılmaz hata verir
+
+-nmap,wget, vb.. uygulamanın adı yazıldığında sistemde olup olmadığı sorgulanır
+
+-wget https://google.com == indirmeyi sağlar wget. google ı indirir suan
+
+- ls -al == sitemdeki tüm dosyaları listeler
+
+- cd "gidilmesi istenen yer" == cd komutu istenilen yere girer
+
+-cd Downloads == downloads klasörüne gider
+
+-ls -al == nerdeysen onu listeler işte
+
+- pwd == hangi dizinde yani nerde olduğumu görmemi sağlar
+
+- sudo dpkg -i google-chrome-stable...adres ismi yani.otomatik çıkar zaten heralde(taba bas)
+
+				PAKET SİLME
+
+-Sudo dpkg -r google(taba bas),wget,nmap...vb. == dpkg ile paketi siler
+
+-sudo apt remove wget,nmap,google..vb. == apt ile paketi siler
+
+-!! apt ile kurulan bir program dpkg ile de apt ile de silinebilir. ya da dpkg ile kurulan bir program apt ile de silinebilir!!
+
+-bir şeyin tam paket adını öğrenebilmek için == dpkg -l | grep chrome..vb.
+
+-  sudo apt purge wget  == remove ile ya da -r ile silinen şeyin tüm arta kalan (config) dosyalarını siler sistemden kazır yani..
+
+
+				PAKET GÜNCELLEME
+
+- apt update : günceller
+
+- sudo apt upgrade : bir üst versiyona çıkarır.hepsini
+
+- sudo apt --only-upgrade install paket adı : sadece girilen programı bir üst verisyona çıkarır
+
+- apt list --upgradable : tüm listeyi tarar ve olabilecek programları önümğze çıkarır. istersek yapar 
+
+				KAYNAK KODDAN PROGRAM(PAKET) YÜKLEME
+
+uygulamanın kendi sitesinden kaynak kodu indirildikten sonra
+
+- cd downloads
+
+- ls -al
+
+- bzip2 -d nmap(taba bas) 
+				== zipden dışarı çıkartır bu iki komut
+- sudo tar xvf nmap(taba bas)
+
+- cd nmap  == nmap içine giriyo bunu yukarda yazmıştım
+
+- sudo ./configure == çalıştırp derliyor
+
+- sudo make == kuruyor
+
+- sudo make install == indirip kuruyor herşey tamam
+
+- nmap scanne.org == nmap in çalışıp çalıştırmadığını denemek için. tarama deneme sitesi
+
+- sudo make uninstall == geri silmek. ama kaynak kodu durur
+
+
+				LİNUX SOURCE LİST
+
+	vs code nin indirici makinasını (kaynak yazılımı) indirdikten sonra
+
+- cd /etc/apt/
+
+- ls -al
+
+- more sources.list == daha detaylı bilgi
+
+- cd sources.list.d
+
+- ls -al
+
+- cd downloads
+
+- ls -al
+
+- sudo dpkg -i(install demek. apt ile yapıldığında install) code....vscode in paket adı işte
+
+- ls -al /etc/apt/sources.list.d/
+
+- more /etc/apt/sources.list.d/vscode.list
+
+			
+
+				LOCAL REPO OLUŞTURMA
+
+- cd /var/
+
+- sudo mkdir localrepo == mkdir yeni repo oluşturma komutudur
+
+- sudo apt golang-go(örnek) -d(sadece indirme komutu) --reinstall(paketi indirdikten sonra geri silebilmek için girilen komut) --allow-downgrades(daha düşük bir verisyona geçirebilnümek için) --allow-remove-essential(uygulamanın ek özellikleri varsa bunu silebilme özellik komutu) --allow-change-held-packages(uygulama üzerindeki heldlerin değiştirlmesi ile alakalı komut)
+
+- sudo apt golang-go -d --reinstall --allow-remove-essentials --allow-change-held-packages 
+
+-  -d = sadece indirme komutudur yani yüklemez,kurmaz
+
+-  --reinstall = indirdikten sonra geri silmeye yarayan komut
+
+-  --allow-downgrades == daha düşük bir versiyona geçebilmek için girilmesi gereken komut
+
+-  --allow-remove-essentials == ek özellikleri varsa onları silebilmeye yarayan komuttudur
+
+- --allow-change-held-packages == uygulamadaki heldlerin değiştirilmesine yarayan komuttur
+
+- ls -al /var/cache/apt/archives/
+
+- sudo cp(copy komutu) /var/cache/apt/archives/*.deb /var/localrepo/
+
+- cd localrepo
+
+- ls -al
+
+- sudo su
+
+- dpkg-scanpackages . /dev/null | gzip -9c > Packages.gz
+
+- vi /etc/apt/soruces.list.d/local.list
+
+- deb [trusted=yes] file:///var/localrepo./
+(kaydet çık)=exit
+
+- apt update
+
+- vi /etc/apt/sources.list
+
+- apt-get update
+
+- apt install golang-go
+
+- go version
+
+-  nmap -O == nmap in hem tarayıp hem de işletim sistemini tespit eder
+
+			
+				YENİ KULLANICI EKLEME SUDO GRUBUNA
+
+- useradd -s /bin/bash -m -d /home/hacker -g sudo hacker
+
+- cat /etc/passwd == kullanıcıları listeleme
+
+- id hacker (kullanıcı adı bu öyle örnek)
+
+- cat /etc/shadow == kullanıcı ile ilgili detaylı bilgi
+
+- passwd hacker == yeni kullanıcıya şifre verme
+
+- groupadd pentesters(grup adı örnek)
+
+- cat /etc/group == grupları listeleme
+
+- usermod -G pentesters root(ismi neyse onu)  == kullanıcıyı gruba eklemek
+
+- gpasswd -d hacker(kullanıcı ismi) pentestesters(grup ismi) == kullanıcıyı gruptan silmek
+
+- usermod -L hacker == kullanıcıyı kilitler,kullanıcı sisteme giremez
+
+- userdel hacker == kullanıcıyı siler gruptan atar
+
+- userdel -r hacker == kullancıyı sildiği gibi onunla ilgili bütün verileri siler
+
+- ls -al /home/ == hacker ı görmek
+
+- userdel -r hacker
+
+-ls -al /home/
+
+
+				SUDO YAPILANDIRMASI
+
+- systemctl == servisleri kontrol eder
+
+- id tunahan(kullanıcı ismi neyse) == kullanıcın bilgisi
+
+- cat /etc/groups == grup listeleri
+
+- sudo cat /etc/shadow == kullanıcı listeleri
+
+- sudo usermod -aG sudo hacker == hacker adlı kullanıcıyı grup a ekledik
+
+- su hacker(ismi neyse işte anla) == hacker kullancısına geçiş yapma
+
+- sudo gpasswd -d hacker  sudo == kullanıcının gruptan çıkarılması
+
+			BİR KULLANICIYA İSTENİLEN YETKİYİ VERME (SUDO YETKİSİ)
+
+- sudo vi /etc/sudoers
+
+- KIRMIZI yazıların olduğu yerin altına kullanıcı ismi
+
+- sonra  mesela;
+ 
+tunahan  ALL=(ALL:ALL) BURAYA istenilen yetkinin ismi (mesela: /usr/bin/systemctl)
+
+- %pentesters ...ALL.. == kullanıcı gibi gruba istenilen yetkiyi verme
+
+- cd /usr/bin == usr bin de sistemdeki tüm dosyalar ve uygulamalar burda tutuluyor
+
+
+				TEMEL AĞ KOMUTLARI/İŞLEMLERİ
+
+- sysytemctl status network == bağlı olduğum netin bilgileri
+
+- systemctl restart networking == ayarları yeniden başlatıyor
+
+- ip addr (ya da addr show) == detaylı bilgi netle ilgili
+
+- ip link set eth0 down == internet kartını devre dışı bırakır(interneti kapatır)
+
+- ip link set eth0 up == interneti açar 
+
+- ethtool -i eth0 == kullandığımız interface ile ilgili detaylı bilgi
+
+- ethtool -S eth0 == daha detaylı bilgi
+
+- cat /etc/resolv.conf == dns ayarları==nameserver
+
+- vi /etc/resolv.conf == onu değiştirebilir yani ıp ve dns adresimizi
+
+- ethtool -i eth0 == bilgi detaylı
+
+
+
+				SERVİS YÖNETİMİ
+
+
+- systemctl status nginx == servisin hangi durumda olduğu
+
+- sudo systemctl status sshd(servis adı örnek)
+
+ en başında boş daire varsa sistemin çalışmadığını gösterir, dolu olursa çalırşır
+
+- sudo systemctl start sshd == servisi başlatmak 
+
+- sudo systemctl stop nginx == servisi durdurmak
+
+- sudo systemctl restart nginx == servisi yeniden başlatma
+
+- sudo systemctl enable nginx == pc açıldığında servisi oto açmak
+
+- sudo systemctl disable nginx == açılınca bu servisi oto başlamayack
+
+
+				SÜREÇ YÖNETİMİ
+
+- ps == var olan kullanıcı üzerinde çalışan temel süreçleri gösterir
+
+- ps aux == detaylı tüm süreçler
+
+- ps axjf == ağaç yapısında görüntülemek
+
+- pstree == reopstlarla ilgili ağaç temalı bilgiler
+
+- top == hangi uygulama işlemciyi ne kadar kullanıyo görebilmemizi sağlar
+
+- q bas burdan çıkar
+
+- apt install htop == cpu yu kullanan uygulamları daha detaylı ve görsel olarak verir
+
+- htop == çalıştırır
+
+- çıkmak için q veya f10 a bas
+
+- free == memory nin detaylı bilgisini verir
+
+- uptime == makina ne zamandan beri açık fln filan
+
+
+
+					DİZİNLER ARASI GEZİNMEK
+
+- ls -alp == örnek dizin
+
+- ll ==normal klasöerler
+
+- cd home
+
+- ll
+
+- cd kali(ya da root kişi ismi işte)
+
+- cd == dizinler arası geçişin komutu
+
+- pwd == hangi dizindeyiz onu bilme
+
+- cd /home
+
+- cd Desktop
+
+- ll
+
+- cd /usr/bin
+
+- ll
+ 
+- cd .. == geri dizine gelme bir önceki dizine
+
+- ll == az detay
+
+- pwd
+
+- ls -al == cok detay
+
+- find /ilgili dizin 
+
+-find / -name sqlmap(örnek) == istenilen klasörü bulma
+
+- find / -name nmap
+
+- find /etc -name nmap == etc dosyasının altında arar /etc=örnek
+
+- find / -name *.py == sonu py ile biten tüm dosyalar
+
+- find / -name *.py | wc -l == kaç yerde py varsa onu bulur
+
+
+			DOSYA DİZİNİNİN OLUŞTURULMASI
+
+- more /etc/group == dosya okuma komutlarından biridir(more)
+
+- more /usr/share/sqlmap/sqlmap.py == yazılımın kaynak kodunu okuyabilirz. 
+
+- more - cat aynı komuttur bir bakıma ikisi de kaynak kodunu gösterir
+
+- ama daha çok more kullanılır -- çıkmak için q ya basılır
+
+			
+			DOSYA OLUŞTURMA
+
+- mkdir /home/desktop/dosya ismi == mkdir komutu dosya oluşturma komutudur. ileridekikerlde nereye oluşturmak istersem oraya yzdırırım.
+
+- su kali 
+	  == root kullanısından normal kullanıcıya dönmek vs
+- su root
+
+- touch kamil.py
+		== istenilen özellikte dosya oluşturmya yarar
+- touch kamil.txt
+
+- cp kamil.py linuxsaldırı.py == dosyadan dosyaya kopyalamak için kullanılan komut
+
+- cp kamil. txt  linuxsaldırı.txt == aynı şey
+
+- cp gural.txt /home/kamil/desktop
+
+
+
+					DOSYA SİLME
+
+- rm = silme komutudur
+
+- rm -rf / == hepsini siler COK DİKKATLİ BUNU SAKIN YAZMA
+
+- cd linuxculer2
+
+- ll 
+
+- rm dosyaismi
+
+- rm kamil.py
+
+- rm -rf linuxculer2(dosya ismi) == zorla tüm dosyaların eklentilerini siler. bidaha da geri alınamaz. linuxta çöp kutusu yoktur!!
+
+		UZAKTAKİ DOSYAYI SİLME
+
+- sudo rm -rf /home/dosyaismi(örnek)
+
+- rm -rf /* == bu KOMUTU SAKIN ÇALIŞTIRMA
+
+
+		
+	
+				DOSYAYI TAŞIMA
+
+- mv /home/kamil.py/Desktop/linux_1/
+
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
