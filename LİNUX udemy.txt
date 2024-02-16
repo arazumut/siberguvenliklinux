@@ -1,0 +1,298 @@
+					
+					DOSYALARI OKUMA						
+
+- cat == dosya okuma komutu (tüm dosyayı)
+
+- head == dosya okuma komutu (ilk satırları)
+
+- locate wordlist == açma dosyayı-ilerleyen zamanda anlatcak
+
+- head (dosya yolu)
+
+- head --help
+
+- head -n 30 (dosya yolu) == istenilen satıra kadar görüntülenmesi
+
+- head -n -30 (dosya yolu) == son 30 satırı bana gösterme
+
+- tail --help
+
+-tail (dosya yolu) == son satırları gösterir
+
+- tail -n 30 == son 30 satırı gösterme 
+
+- tail == sonları gösterir -- head == başları gösterir -- cat == hepsini gösterir
+
+-  tail -n +30 == baştaki ilk 30 satırı gösterme
+
+
+				DOSYA açma-kapama-editleme-silme
+
+
+- sudo mkdir umut == açar dosyayı == make directory
+
+- sudo rmdir umut == siler dosyayı == remove directory
+
+- sudo touch umut1.txt == uzantısıyla birlikte oluşturur
+
+- mousepad umut2.txt == dosya açılır içine yazabilirz ctrl s yap kaydet kaydedilir
+
+- leafpad == mousepad ile aynı
+
+- sudo apt-get leafpad == linux un kendi kütüpahnesinden indirir
+
+- geany == aynı buda mousepad ile leafpad ile (aynı zamanda kod edit)
+
+- sudo rm umut1.txt == dosyayı silme
+
+- sudo rm -rf umut1.txt == silinmeyen dosyaları zorla silmektir
+
+- -r de kullanılabilir sadece
+
+
+
+
+- pwd == hangi dizinde olduğumu gösterir
+
+- cp == copy == kopyalar
+
+- sudo cp umut1.txt downloads == umut1.txt dizinini downloads klasörüne koplayamak
+
+- ilki kopyalanan - diğeri nereye kopyalamak istediğimiz
+
+- sudo mv = move == umut1.txt downloads == kopyalama değil direkt dosyayı göndermek istediğimiz yere transfer eder
+
+- ilki kopyalanan - diğeri nereye kopyalamak istediğimiz
+
+- sudo mv umut1.txt Downloads
+
+- locate == aramak
+
+- locate webshell == webshel ile alakalı ne varsa bana getir
+
+- locate php
+
+
+
+
+
+- find / -type f -name "*.txt" == tüm sistemde txt geçen dosyaları bulur
+
+- find / user kali == kali kullanıcısının yetkiili olduğu tüm şeyleri sıaralar
+
+- find / -iname "umut.txt" == büyük kücük harfleri dikkkate almaksızın sıralar
+
+- find / -perm -ug=rwx  == yetki atama. 
+
+
+
+
+- df == sistemin kullandığı disk alanını kilobayt olarak rami gösterir
+
+- df  -m == mb olarak gösterir
+
+- du == daha ayrıntılı hamgisi ne kadar yer kaplıyo
+
+- du -h == mb ya da kb olarak gösterir
+
+
+
+- ping google.com == paketler atar
+
+- uname == hangi işletim sisteminı kullandığımızı gösterir
+
+- uname -a == üsttekiniden daha detaylı
+
+- top == ne kadar cpu harcıyo hangi dosya fln filan
+
+-  diff shell.php hash.php == iki dosya arasındaki farklıları gösterir.karşılaştırır
+
+
+
+
+
+- man == bi bakıma --help komutuyla aynı=bi bakıma kullanım kulavuzu
+
+- echo == yazılan şeyi çıktı alma -- yazı yazma şeysi
+
+- echo "linux eğitim"
+
+- echo "linux eğitimi" >> linux.txt == linux eğitimi diye yazılan şeyi txt dosyasına kaydetmek
+
+echo "linux dersleri" >> linux.txt == txt nin içinde var olan metne ekleme yapar ">>" işreti
+
+- ama tek bir tane > yapılırsa ozmn var olan metni yeni metne cevirir.yani öncekini siler
+
+- echo "dersler" > linux.txt
+ 
+- cat linux.txt == txt nin içini okumak
+
+
+
+
+
+
+- useradd --help == kullanıcı ekler
+
+- sudo cat /etc/shadow
+
+- sudo useradd adem 
+
+- cat /etc/passwd
+
+- sudo passwd adem == şifre belirleriz
+
+- su adem
+
+- sudo userdel adem == kullanıcıyı siler
+
+- sudo adduser adem == manuel olarak şifreyi ister hiç uğtaştırmadan passwd fln
+
+- sudo deluser linux == siler işte
+
+
+
+- history == linux a başladıktan bugune kadar kullanılan tüm komutlar
+
+- dev10 internet sitesine göz at == dosya zipleme zip i açma...
+
+    * zip; depolama için sağlıklı olan verileri kaybetmeden saklamaya yarayan fermuar anlamına gelir
+
+- zip --help
+
+- zip -r linenum.zip LinEnum/ == ilk yazdığım - dosyaya verilen isim 2. yazdığım - ise şuanki dosya ismi (dosya ismi örnektir)
+
+- sudo unzip linenum.zip == zipden çıkarıyo işte
+
+- All
+
+- sudo rm -rf linenum.zip  == zip dosyasını sildik
+
+
+
+- tar --help
+
+   * tar; dosyayı arşivlemeye yarar.depolamaya yararlıdır bu da zip gibidir
+
+- tar -cf linenum.tar Lineum/ == arşivler. ilk yazdığım- benim koyduğum isim 2.yazdığım pc deki ismi
+
+- sudo tar -xf linenum.tar  == tardan çıkarır (DOSYA İSİMLERİ ÖRNEKTİR.(EN BASINDAN BERİ!!!))
+
+
+
+
+- ps == çalışan islemleri gösterir
+
+- ps --help
+
+- ps -aux == çalışanların hepsi burda
+
+- kill == işlemi sonlandırma 
+
+- kill (çalışan uygulamanın pId si) == pId si ps -aux komutu verildiğinde görünür
+== işlemi sonlandırır
+
+- kill -9 (pId) == kapanmaya izin vermiyprsa uygulama ne olursa olsun zorla kapatmaya yarar(-9) == kullanılması avsiye edilmes
+
+- kill -15 (pId) == işlem kapattığımızda.tekrar başlandığında kaldığı yerden işlem devame eder
+
+
+
+
+- hostname --help
+
+- hostname 
+
+- hostname -I == KALİNİN ıp adresini gösterir
+
+- hostname -i == AĞ ARAYÜZÜNÜN ıp adresini gösterir
+
+- whoami == hangi kullanıcıda olduğumuzu gösterir
+
+
+
+
+- ls -la
+
+		CHOWN == dosyayı klasörleri aklına gelen herşeyin grubunu kullanısnı değiştirirsin
+
+- sudo chown kali linux.txt == linuxt.txt dosyasını kali grubuna atar
+
+- sudo chown kali:kali linux.txt  == linux.txt dosyasını kali kullanıcısna ve kali grubuna aktarma 
+
+
+
+
+		CHMOD
+	 
+- ls -la
+
+en soldaki rwxrw gibi şeylerle ilgilencez
+
+x harfi = execition= çalıştıma nın karşığı
+
+w == write == yazmanın karşılığı
+
+r == read == okuma yetkisi
+
+  * vmaraci.com internet adresini ziyaret et
+
+
+
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
